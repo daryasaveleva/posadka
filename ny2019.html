@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+	<meta name="viewport" content="width=1280">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta http-equiv="content-language" content="ru">
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans&amp;subset=cyrillic" rel="stylesheet">
+	<link rel="icon" href="https://www.26-2.ru/images/posadki/black18/favicon.ico" type="image/x-icon">
+	<script src="https://www.26-2.ru/files/js/jquery-2.2.4.min.js"></script>
+	<script src="https://www.26-2.ru/files/js/bootstrap.min.js"></script>
+	<script src="https://www.26-2.ru/files/js/owl.carousel.min.js"></script>
+	<link rel="stylesheet" href="https://www.26-2.ru/files/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/main_ny2019.css?v2">
+	<link rel="stylesheet" href="css/media_ny2019.css?v1">
+	<link rel="stylesheet" href="https://www.26-2.ru/files/css/rx-login.css">
+	<link rel="stylesheet" href="https://www.26-2.ru/podpiska/assets/fonts/fonts.css?v1"> 
+	<link rel="stylesheet" href="https://www.26-2.ru/files/css/owl.carousel.min.css">
+	<title>Журнал "Упрощенка"</title>
+
+	<script type="text/javascript">
+    var ID2_SITE_USER_ID = 0;
+    var BLOCK_LOGIN = false;
+    var senddata_login=false;
+    var senddata_logout=false;
+
+    var aktion = aktion || [];
+    (function(){
+        var s = document.createElement('script');
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = '//m.action-media.ru/js/all.2.js';
+        var es = document.getElementsByTagName('script')[0];
+        es.parentNode.insertBefore(s, es);
+    })();
+    window.AsyncInit = function () {
+        aktionid.init({
+            appid: 20,
+            emid: 145,
+            rater: false,
+            clientcallback: 'popupManagerHide',
+            loginblock: 'panelcontainer',
+            style: 'default',
+            supportlink: 'https://id2.action-media.ru/Feedback',
+            reglink: 'https://id2.action-media.ru/Account/Registration?appid=20&callbackurl=http%3A%2F%2Fwww.26-2.ru%2F&rand=eecc2f5b37a68de20a5f5b4bf87788bb&sig=dd1b929c227630dc74ea8a606e6ac897'
+        });
+        
+        aktionid.subscribe("status.auth", "statusAuthCallback");
+        aktionid.subscribe("status.noauth", "statusNoauthCallback");
+        
+    };
+    function send_agregator(array_agregator){
+        array_agregator[3]=escape(array_agregator[3]);
+        aktion.push(array_agregator);
+        //console.info(array_agregator[2])
+        if (array_agregator[6]){
+        }else{
+            array_agregator[6]='';
+        }
+        
+        var rand = Math.round(Math.random() * 1000000000);
+        // ЛОГИРОВНИЕ
+        $.ajax({
+            type: 'POST',
+            url: '/site/aggregatorLogger/save?rnd='+rand,
+            data: {
+                'userId': array_agregator[1],
+                'actionType': array_agregator[2],
+                'category1': array_agregator[4],
+                'category2': array_agregator[5],
+                'actionValue': array_agregator[6],
+                'url': array_agregator[3]
+            },
+            success: function(msg){
+                console.log(msg);
+            },
+            error: function(){
+                console.log('error');
+            }
+        });
+    }
+function statusAuthCallback(o) {
+            var userId = o.user.id; // ИДЕНТИФИКАТОР ПОЛЬЗОВАТЕЛЯ ВСГДА ДОЛЖЕН БЫТЬ 0
+            var actionType = 'podpiska'; //СОБЫТИЕ DM
+            var category1 = 'podpiska'; //СЮДА НАДО ПОДСТАВИТЬ ЧТО ТО ВРОДЕ mag_12, mag_6 И Т.Д.
+            var category2 = '145'; //  ПОСТАВИТЬ СЮДА ВАШ PUBLICATION_ID
+            var actionValue = ''; // ЭТО ЗНАЧЕНИЕ ПУСТОЕ
+            var url = location.href;
+
+            var array_agregatorp=['saveaction',userId,actionType,url,category1,category2];
+            send_agregator(array_agregatorp);
+    }
+    
+    function statusNoauthCallback() {
+            var userId = 0; // ИДЕНТИФИКАТОР ПОЛЬЗОВАТЕЛЯ ВСГДА ДОЛЖЕН БЫТЬ 0
+            var actionType = 'podpiska'; //СОБЫТИЕ DM
+            var category1 = 'podpiska'; //СЮДА НАДО ПОДСТАВИТЬ ЧТО ТО ВРОДЕ mag_12, mag_6 И Т.Д.
+            var category2 = '145'; //  ПОСТАВИТЬ СЮДА ВАШ PUBLICATION_ID
+            var actionValue = ''; // ЭТО ЗНАЧЕНИЕ ПУСТОЕ
+            var url = location.href;
+
+            var array_agregatorp=['saveaction',userId,actionType,url,category1,category2];
+            send_agregator(array_agregatorp);
+    }
+
+</script>
+<!--b_google /-->
+<script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    var pluginUrl =
+        '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+    _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+    _gaq.push(['_setAccount', 'UA-31416641-1']);
+
+    _gaq.push(['_setDomainName', '.26-2.ru']);
+
+    _gaq.push(['_addOrganic', 'mail.ru', 'q']);
+    _gaq.push(['_addOrganic', 'rambler.ru', 'words']);
+    _gaq.push(['_addOrganic', 'nova.rambler.ru', 'query']);
+    _gaq.push(['_addOrganic', 'nigma.ru', 's']);
+    _gaq.push(['_addOrganic', 'blogs.yandex.ru', 'text']);
+    _gaq.push(['_addOrganic', 'webalta.ru', 'q']);
+    _gaq.push(['_addOrganic', 'aport.ru', 'r']);
+    _gaq.push(['_addOrganic', 'akavita.by', 'z']);
+    _gaq.push(['_addOrganic', 'meta.ua', 'q']);
+    _gaq.push(['_addOrganic', 'bigmir.net', 'q']);
+    _gaq.push(['_addOrganic', 'tut.by', 'query']);
+    _gaq.push(['_addOrganic', 'all.by', 'query']);
+    _gaq.push(['_addOrganic', 'i.ua', 'q']);
+    _gaq.push(['_addOrganic', 'online.ua', 'q']);
+    _gaq.push(['_addOrganic', 'a.ua', 's']);
+    _gaq.push(['_addOrganic', 'ukr.net', 'search_query']);
+    _gaq.push(['_addOrganic', 'search.com.ua', 'q']);
+    _gaq.push(['_addOrganic', 'search.ua', 'query']);
+    _gaq.push(['_addOrganic', 'poisk.ru', 'text']);
+    _gaq.push(['_addOrganic', 'km.ru', 'sq']);
+    _gaq.push(['_addOrganic', 'liveinternet.ru', 'ask']);
+    _gaq.push(['_addOrganic', 'gogo.ru', 'q']);
+    _gaq.push(['_addOrganic', 'gde.ru', 'keywords']);
+    _gaq.push(['_addOrganic', 'quintura.ru', 'request']);
+    _gaq.push(['_addOrganic', 'blogsearch.google.ru', 'q',true]);
+    _gaq.push(['_addOrganic', 'google.com.ua', 'q',true]);
+    _gaq.push(['_addOrganic', 'images.yandex.ru', 'q',true]);
+    _gaq.push(['_addOrganic', 'poisk.ngs.ru', 'q']);
+    _gaq.push(['_addOrganic', 'ru.yahoo.com', 'p']);
+    _gaq.push(['_addOrganic', 'search.livetool.ru', 'text']);
+    _gaq.push(['_addOrganic', 'search.qip.ru', 'query']);
+    _gaq.push(['_addOrganic', 'search.ukr.net', 'search_query']);
+
+        _gaq.push(['_trackPageview']);
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+     _gaq.push(['_trackEvent', 'Posadka_ny2019', 'show']);
+    </script>
+<!--b_google /-->
+</head>
+<body>
+	<noindex>
+		<div class="rx-userbar">
+			<div class="rx-userbar-inner">
+				<div class="rx-userbar-left">
+					<div class="rx-logo rx-logo-alpha">&lt;Актион&gt;</div>
+				</div>
+				<div class="rx-userbar-right">
+					<div class="blck-pan noclass" id="panelcontainer"><div class="informer-wrapper"><div class="id2-rx-user-informer-block">  <a title="Поддержка" href="https://id2.action-media.ru/Feedback" target="_blank" class="support support-icon"></a> <div class="id2-rx-user-informer-button id2-rx-noauth-informer-button"><span class="id2-rx-user-informer-icon"></span> <span id="id2-rx-user-buttontitle">Вход и регистрация</span> <span id="id2-rx-user-buttontitlelong"></span></div></div></div></div>
+				</div>
+			</div>
+		</div>
+		<div class="rx-userbar-placeholder"></div>                        
+	</noindex>
+	<div class="top container-fluid">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6">
+					<img src="https://www.26-2.ru/images/posadki/black18/logo-top.png" alt="Упрощенка" class="top__logo">
+				</div>
+				<div class="col-sm-6">
+					<div class="top__phone">
+						8 800 550 15 57
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<div class="bg">
+
+	<div class="header container-fluid">
+		<div class="container">
+			<div class="row no-gutters">
+				<div class="col-12 header__title">
+					В новый год — с «Упрощенкой»!
+				</div>
+				<div class="col-lg-7 col-md-6 header__animate">	
+					<div class="header__clock">
+						<img src="https://www.26-2.ru/images/posadki/ny2019/Clock_12-2.png" class="img-slide img14 img-fluid">
+						<img src="https://www.26-2.ru/images/posadki/ny2019/Clock_12.png" class="img-slide img13 img-fluid">
+						<img src="https://www.26-2.ru/images/posadki/ny2019/Clock_11.png" class="img-slide img12 img-fluid" style="z-index:2;">
+						<img src="https://www.26-2.ru/images/posadki/ny2019/Clock_10.png" class="img-slide img11 img-fluid" style="z-index:2;">
+						<img src="https://www.26-2.ru/images/posadki/ny2019/Clock_9.png" class="img-slide img10 img-fluid" style="z-index:2;">
+						<img src="https://www.26-2.ru/images/posadki/ny2019/Clock_8.png" class="img-slide img9 img-fluid" style="z-index:2;">
+						<img src="https://www.26-2.ru/images/posadki/ny2019/Clock_7.png" class="img-slide img8 img-fluid" style="z-index:2;">
+						<img src="https://www.26-2.ru/images/posadki/ny2019/Clock_6.png" class="img-slide img7 img-fluid" style="z-index:2;">
+						<img src="https://www.26-2.ru/images/posadki/ny2019/Clock_5.png" class="img-slide img6 img-fluid" style="z-index:2;">
+						<img src="https://www.26-2.ru/images/posadki/ny2019/Clock_5.png" class="img-slide img6 img-fluid" style="z-index:2;">
+						<img src="https://www.26-2.ru/images/posadki/ny2019/Clock_4.png" class="img-slide img5 img-fluid" style="z-index:2;">
+						<img src="https://www.26-2.ru/images/posadki/ny2019/Clock_3.png" class="img-slide img4 img-fluid" style="z-index:2;">
+						<img src="https://www.26-2.ru/images/posadki/ny2019/Clock_2.png" class="img-slide img3 img-fluid" style="z-index:2;">
+						<img src="https://www.26-2.ru/images/posadki/ny2019/Clock_1.png" class="img-slide img2 img-fluid" style="z-index:2;">
+						<img src="https://www.26-2.ru/images/posadki/ny2019/Clock_12-1.png" class="img-slide-v img1 img-fluid" style="z-index:1;">
+					</div>
+				</div>
+				<div class="col-lg-5 col-md-6 header__text">
+					<div class="">
+						<span>12</span>&nbsp;месяцев<br>
+						ПОДПИСКИ<br>
+						по&nbsp;суперцене
+					</div>
+					<div class="header__button">
+						<a href="https://new.bill.26-2.ru/bill/145_2_12/emag_12.html" target="_blank" class="button button__white" role="button" aria-pressed="true" onclick="_gaq.push(['_trackEvent', 'Posadka_ny2019', 'clik', 'button']); return true;">Подписаться</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="showcase container-fluid">
+		<div class="container">
+			<div class="row">
+				<div class="owl-carousel showcase__box" id="carouselOne">
+					<div class="emag row no-gutters">
+						<div class="showcase__name col-12">
+							Электронный журнал и книга «Годовой отчет-2018»
+						</div>
+						<div class="showcase__body row no-gutters">
+							<div class="col-xl-5 col-md-6">
+								<div class="showcase__item">
+									Только сегодня<br>
+									cкидка <span class="yellow"><span class="yellow-big">33</span>%</span><br>
+									при подписке<br>
+									на <span class="yellow"><span class="yellow-big">12</span> месяцев</span>	
+									<div class="showcase__price">
+										10 990 <span class="r-sans-b">₽</span>
+									</div>
+								</div>
+							</div>
+							<div class="showcase__journal col-xl-7 col-md-6">
+								<img src="https://www.26-2.ru/images/posadki/ny2019/ypr-el.png" alt="Электронный журнал" class="img-fluid">
+							</div>
+						</div>
+						<div class="showcase__foot row no-gutters">
+							<div class="col-xl-5 col-md-6">
+								<div class="showcase__oldprice">
+									<span class="td-lt">16 236&nbsp;</span><span class="r-sans-s">₽</span>
+									<span class="oldprice__notice">за годовую подписку</span>
+								</div>
+							</div>
+							<div class="showcase__button col-xl-7 col-md-6">
+								<a href="https://new.bill.26-2.ru/bill/145_2_12/emag_12.html" class="button button__yellow" target="_blank" onclick="_gaq.push(['_trackEvent', 'Posadka_ny2019', 'clik', 'emag']); return true;">Распечатать счет</a>
+								<a href="https://www.26-2.ru/podpiska/pay/order/2/?controll=Products2" class="card" data-type='emag' data-prodid='2' data-cardcontroll="Products2" data-shablone='8' onclick="_gaq.push(['_trackEvent', 'Posadka_ny2019', 'clik', 'card']); return true;" target="_blank">Оплатить картой</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="mag row">
+						<div class="showcase__name col-12">
+							Печатный журнал и книга «Годовой отчет-2018»
+						</div>
+						<div class="showcase__body row no-gutters">
+							<div class="col-xl-5 col-md-6">
+								<div class="showcase__item">
+									Только сегодня<br>
+									cкидка <span class="yellow"><span class="yellow-big">33</span>%</span><br>
+									при подписке<br>
+									на <span class="yellow"><span class="yellow-big">12</span> месяцев</span>	
+									<div class="showcase__price">
+										10 990 <span class="r-sans-b">₽</span>
+									</div>
+								</div>
+							</div>
+							<div class="showcase__journal col-xl-7 col-md-6">
+								<img src="https://www.26-2.ru/images/posadki/ny2019/ypr-print.png" alt="Печатный журнал" class="img-fluid">
+							</div>
+						</div>
+						<div class="showcase__foot row no-gutters">
+							<div class="col-xl-5 col-md-6">
+								<div class="showcase__oldprice">
+									<span class="td-lt">16 236&nbsp;</span><span class="r-sans-s">₽</span>
+									<span class="oldprice__notice">за годовую подписку</span>
+								</div>
+							</div>
+							<div class="showcase__button col-xl-7 col-md-6">
+								<a href="https://new.bill.26-2.ru/bill/145_1_12/mag_12.html" class="button button__yellow" target="_blank" onclick="_gaq.push(['_trackEvent', 'Posadka_ny2019', 'clik', 'mag']); return true;">Распечатать счет</a>
+								<a href="https://www.26-2.ru/podpiska/pay/order/4/?controll=Products2" class="card" data-type='mag' data-prodid='4' data-cardcontroll="Products2" data-shablone='8 onclick="_gaq.push(['_trackEvent', 'Posadka_ny2019', 'clik', 'card']); return true;" target="_blank">Оплатить картой</a>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		$(document).ready(function(){
+			$('#carouselOne').owlCarousel({
+				loop:true, //Зацикливаем слайдер
+				items:1, //Кол-во отображаемых элементов в слайдере
+				margin:50, //Отступ от элемента справа в 10px
+				nav:true, //Отображение кнопок вперед\назад
+				smartSpeed:600 //Просчитывание скорости пролистывания
+			});
+		});
+	</script>
+	<div class="anounce container-fluid">
+		<div class="container">
+			<div class="row">
+				<div class="section__title anounce__title">
+					Читайте в 2019 году
+				</div>
+				<div class="col-lg-11 offset-lg-1">
+					<div class="question__list">
+						<div class="question__item row">
+							<div class="question__showmore col-lg-1 col-2">
+								<div class="question__item-show"></div>
+								<div class="question__item-hide hidden"></div>
+							</div>
+							<div class="question__title col-10">
+								Рейтинг способов экономии в 2019 году: как снизить налог на УСН и взносы
+								<div class="question__content hidden">
+									Редакция выяснила у экспертов и практиков, какие способы экономии безопасны в новом году.  Все способы одобрили ФНС и Минфин, поэтому их можно смело использовать
+								</div>
+							</div>
+						</div>
+						<div class="question__item row">
+							<div class="question__showmore col-lg-1 col-2">
+								<div class="question__item-show"></div>
+								<div class="question__item-hide hidden"></div>
+							</div>
+							<div class="question__title col-10">
+								Две новые справки 2-НДФЛ: для инспекции  и работника
+								<div class="question__content hidden">
+									Теперь вместо одной справки 2-НДФЛ будут две – для инспекции и работника. Новые формы отличаются друг от друга и от старого бланка. Все различия мы показали на образцах
+								</div>
+							</div>
+						</div>
+						<div class="question__item row">
+							<div class="question__showmore col-lg-1 col-2">
+								<div class="question__item-show"></div>
+								<div class="question__item-hide hidden"></div>
+							</div>
+							<div class="question__title col-10">
+								Ваш гид-навигатор по упрощенной декларации
+								<div class="question__content hidden">
+									По нашему опросу, 60 процентов компаний неверно заполняют декларацию по УСН. На то есть три причины. Пошаговый алгоритм заполнения декларации по УСН избавит от ошибок в отчетности
+								</div>
+							</div>
+						</div>
+						<div class="question__item row">
+							<div class="question__showmore col-lg-1 col-2">
+								<div class="question__item-show"></div>
+								<div class="question__item-hide hidden"></div>
+							</div>
+							<div class="question__title col-10">
+								Пять ключевых изменений в квартальном расчете по взносам
+								<div class="question__content hidden">
+									В следующем году работодатели сдают расчет по взносам с учетом новых правил. Изменения в первую очередь коснутся тех упрощенцев, которые потеряли право на льготные тарифы. Проверьте отчет по пяти контрольным точкам
+								</div>
+							</div>
+						</div>
+						<div class="question__item row">
+							<div class="question__showmore col-lg-1 col-2">
+								<div class="question__item-show"></div>
+								<div class="question__item-hide hidden"></div>
+							</div>
+							<div class="question__title col-10">
+								Как инспекторы используют книги учета, чтобы доначислить налоги
+								<div class="question__content hidden">
+									Мы выяснили, что книги учета – основной источник информации для налоговиков, чтобы найти ошибки в расчете налога на УСН. Инспекторы поделились секретами, какие сведения помогают им выявить нарушения
+								</div>
+							</div>
+						</div>
+						<div class="question__item row">
+							<div class="question__showmore col-lg-1 col-2">
+								<div class="question__item-show"></div>
+								<div class="question__item-hide hidden"></div>
+							</div>
+							<div class="question__title col-10">
+								На онлайн-ККТ переходят все. Что срочно проверить перед 1 июля
+								<div class="question__content hidden">
+									Отсрочка перехода на онлайн-кассы закончилась, а в чеках стало больше обязательных реквизитов. Вместе с ФНС мы составили памятки-инструкции, как работать по новым правилам
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<script>
+					$(function() {
+						mainNoticeShow();
+						mainNoticeHide();
+
+						function mainNoticeShow() {
+							$(document).on('click','.question__item-show', function(){
+								$(this).addClass('hidden');
+								$(this).siblings().removeClass('hidden'); 
+								$(this).parents('.question__item').find('.question__content').slideToggle(300); 
+							});
+						}
+
+						function mainNoticeHide() {
+							$(document).on('click','.question__item-hide', function(){
+								$(this).addClass('hidden');
+								$(this).siblings().removeClass('hidden');
+								$(this).parents('.question__item').find('.question__content').slideUp(300);
+							});
+						}
+					});
+				</script>
+			</div>
+		</div>
+	</div>
+	<div class="bonus container-fluid">
+		<div class="container">
+			<div class="row">
+				<div class="section__title">
+					Ваши дополнительные бонусы<br>при подписке в декабре
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-3 col-sm-6 bonus__item">
+					<img src="https://www.26-2.ru/images/posadki/ny2019/bonus1.png" alt="" class="img-fluid">
+					<div class="bonus__text">
+						Сервисы, расчетчики и&nbsp;калькуляторы для&nbsp;бухгалтера
+					</div>
+				</div>
+				<div class="col-lg-3 col-sm-6 bonus__item">
+					<img src="https://www.26-2.ru/images/posadki/ny2019/bonus2.png" alt="" class="img-fluid">
+					<div class="bonus__text">
+						Доступ на 3 месяца к&nbsp;сервису «Упрощенка. Отчетность»
+					</div>
+				</div>
+				<div class="col-lg-3 col-sm-6 bonus__item">
+					<img src="https://www.26-2.ru/images/posadki/ny2019/bonus3.png" alt="" class="img-fluid">
+					<div class="bonus__text">
+						Книга «Годовой отчет-2018»
+					</div>
+				</div>
+				<div class="col-lg-3 col-sm-6 bonus__item">
+					<img src="https://www.26-2.ru/images/posadki/ny2019/bonus4.png" alt="" class="img-fluid">
+					<div class="bonus__text">
+						Скидка на обучение в&nbsp;Школе главбуха малого предприятия
+					</div>
+				</div>
+			</div>
+			<div class=" bonus__button">
+				<a href="https://new.bill.26-2.ru/bill/145_2_12/emag_12.html" target="_blank" class="button button__white" role="button" aria-pressed="true" onclick="_gaq.push(['_trackEvent', 'Posadka_ny2019', 'clik', 'button']); return true;">Подписаться</a>
+			</div>
+		</div>
+	</div>
+		
+</div>
+
+	  <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    var yaParams = {/*«десь параметры визита*/};
+</script>
+
+<script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter1875757 = new Ya.Metrika({id:1875757,
+                    webvisor:true,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    trackHash:true,params:window.yaParams||{ }});
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/1875757" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+
+<script type="text/javascript" src="https://26-2.ru/podpiska/js/card.js?rand=20170612"></script><script type="text/javascript" src="https://www.26-2.ru/podpiska/js/card_p8.js?rand=20180930"></script>
+    <script type="text/javascript" src="https://www.26-2.ru/podpiska/js/triger.js?rand=20180930"></script>
+<script type="text/javascript" >
+$(document).ready(function(){        
+    setTimeout(function(){
+        $('.carddiv').each(function() {
+            var prodid=$(this).data('prodid');
+            var block=$(this);
+            formfild(block,prodid);
+        });
+    },500);
+    
+    
+    $('form.check_form').find('.btn').click(function() {
+        var form=$(this).parent();
+        var inpch=form.find('input:radio:checked');
+        var n = inpch.length;
+        if (n>0){
+            var rand = 'print'+Math.round(Math.random() * 1000000000);
+            window.open(inpch.val(), rand, 'width=800,height=600,scrollbars=yes');
+        }else{
+            alert('Укажите период подписки.');
+        }
+        return false;
+    }); 
+    
+});  
+</script>
+</body>
+</html>
